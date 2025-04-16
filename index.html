@@ -8,8 +8,45 @@
     <!-- css external -->
     <link rel="stylesheet" href="css\style.css" />
   </head>
-
   <body>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        background: #f5f5f5;
+        padding: 20px;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex: 1 1 300px; /* Min width 300px, grows if space */
+        max-width: 400px;
+      }
+
+      @media (max-width: 1200px) {
+        .card {
+          flex: 1 1 100%; /* Full width on small screens */
+        }
+      }
+    </style>
     <!-- header content -->
     <header class="main-header">
       <!-- logo -->
@@ -19,7 +56,7 @@
         <a href="#Home-section">Home</a>
         <a href="#Profile-section">Profile</a>
         <a href="#Portofolio-section">Portofolio</a>
-        <a href="#Massage-Us-section">Massage us</a>
+        <a href="#Massage-Us-section">Message us</a>
       </nav>
     </header>
 
@@ -34,43 +71,104 @@
         </header>
 
         <!-- banner content -->
-        <div class="banner-img"></div>
+        <style>
+          /* Reset margin dan padding */
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          /* Styling container slider */
+          .slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Atur lebar maksimal sesuai kebutuhan */
+            height: 400px; /* Atur tinggi banner */
+            margin: 20px auto;
+            overflow: hidden;
+          }
+          /* Styling masing-masing slide */
+          .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+          }
+          /* Slide yang aktif akan terlihat */
+          .slide.active {
+            opacity: 1;
+          }
+        </style>
+        <!-- Container slider -->
+        <div class="slider">
+          <img
+            src="assets/banner.jpg.png"
+            alt="Gambar 1"
+            class="slide active"
+          />
+          <img src="assets/banner2.jpg.png" alt="Gambar 2" class="slide" />
+          <img src="assets/banner3.jpg.png" alt="Gambar 3" class="slide" />
+        </div>
+
+        <script>
+          // Ambil semua elemen slide
+          const slides = document.querySelectorAll(".slide");
+          let currentSlide = 0; // slide awal
+
+          // Fungsi untuk mengganti slide
+          function nextSlide() {
+            // Hapus class 'active' dari slide saat ini
+            slides[currentSlide].classList.remove("active");
+            // Hitung index slide berikutnya (siklus)
+            currentSlide = (currentSlide + 1) % slides.length;
+            // Tambahkan class 'active' ke slide berikutnya
+            slides[currentSlide].classList.add("active");
+          }
+
+          // Pindah slide setiap 3 detik
+          setInterval(nextSlide, 3000);
+        </script>
 
         <!-- banner text -->
-        <h1>PT.D Bricket Indonesia</h1>
+        <h1>Tentang Kami!</h1>
         <p class="intro">
-          perusahaan yang bergerak di bidang energi terbarukan, khususnya dalam
-          produksi dan distribusi briket arang berkualitas tinggi. Kami
-          berkomitmen untuk menyediakan solusi energi yang ramah lingkungan,
-          efisien, dan ekonomis, guna mendukung kebutuhan rumah tangga,
-          industri, serta sektor komersial. Briket yang kami hasilkan berasal
-          dari bahan-bahan alami seperti tempurung kelapa dan limbah biomassa
-          lainnya, menjadikannya sumber energi yang berkelanjutan dan memiliki
-          emisi karbon yang jauh lebih rendah dibandingkan bahan bakar fosil.
-          Dengan teknologi modern dan kontrol kualitas yang ketat, kami
-          memastikan setiap produk yang kami hasilkan memenuhi standar nasional
-          dan internasional.
+          PT.D bricket berdiri sejak 17 juli 2010 PT.D bricket perusahaan yang
+          bergerak di bidang energi terbarukan, khususnya dalam produksi dan
+          distribusi briket arang berkualitas tinggi. Kami berkomitmen untuk
+          menyediakan solusi energi yang ramah lingkungan, efisien, dan
+          ekonomis, guna mendukung kebutuhan rumah tangga, industri, serta
+          sektor komersial. Briket yang kami hasilkan berasal dari bahan-bahan
+          alami seperti tempurung kelapa dan limbah biomassa lainnya,
+          menjadikannya sumber energi yang berkelanjutan dan memiliki emisi
+          karbon yang jauh lebih rendah dibandingkan bahan bakar fosil. Dengan
+          teknologi modern dan kontrol kualitas yang ketat, kami memastikan
+          setiap produk yang kami hasilkan memenuhi standar nasional dan
+          internasional.
         </p>
       </section.ion>
 
       <hr />
 
       <!-- profile section -->
-      <section id=" Profile-section">
+      <section id="Profile-section">
         <header>
           <h2>Profile</h2>
         </header>
 
         <!-- Our Profile text -->
-        <div class="profile-text">
+        <div class="Profile-text">
           <h3>Siapa Kami?</h3>
+
           <p>
             PT.D Bricket Indonesia didirikan dengan visi untuk menjadi pemimpin
             dalam pengembangan energi alternatif yang berkelanjutan. Kami
             percaya bahwa energi masa depan harus ramah lingkungan, ekonomis,
             dan mudah diakses oleh semua kalangan.
           </p>
+
           <h3>Komitmen Kami</h3>
+
           <p>
             Kami berkomitmen terhadap praktik produksi yang bertanggung jawab
             dan penggunaan bahan baku alami seperti tempurung kelapa, yang tidak
@@ -78,20 +176,26 @@
             Produk kami telah digunakan secara luas oleh rumah tangga, restoran,
             hingga ekspor ke pasar internasional.
           </p>
+
           <h3>Kenapa Memilih Kami?</h3>
+
           <ul>
             <li>100% bahan alami & ramah lingkungan</li>
             <li>Proses produksi bersih dan berkelanjutan</li>
             <li>Standar kualitas tinggi dan konsisten</li>
             <li>Dukungan teknis dan layanan pelanggan yang responsif</li>
           </ul>
+
           <h3>Visi Kami</h3>
+
           <p>
             Visi Kami Menjadi pelopor dalam pengembangan energi terbarukan di
             Indonesia dan mendorong masyarakat untuk beralih ke sumber energi
             yang lebih bersih dan berkelanjutan.
           </p>
+
           <h3>Misi Kami</h3>
+
           <ul>
             <li>
               Meningkatkan kesadaran masyarakat akan pentingnya energi ramah
@@ -119,15 +223,28 @@
       <section id="Portofolio-section">
         <header>
           <h2>Portofolio</h2>
+          <div class="kotak">
+            <div class="item">
+              <img src="./assets/amerika.jpg" alt="" />
+              <h2>amerika</h2>
+            </div>
+            <div class="item">
+              <img src="./assets/bandung.png" alt="" />
+              <h2>bandung</h2>
+            </div>
+            <div class="item">
+              <img src="./assets/jakarta.jpg" alt="" />
+              <h2>jakarta</h2>
+            </div>
+          </div>
         </header>
 
         <!-- Portofolio text -->
-        <article>
-          <p>
-            bricket adalah energi yang dapat diperbarui dengan dampak positif
-            yang lebih banyak
-          </p>
-        </article>
+
+        <p>
+          ini adalah beberapa kota dan negara yang PT.D Bricket support dari
+          awal berdiri hingga sampai saat ini
+        </p>
       </section>
 
       <hr />
@@ -135,10 +252,44 @@
       <!-- massage us section -->
       <section id="Massage-Us-section">
         <header>
-          <h2>Message Us</h2>
+          <h2 id="temp-massage">Message Us</h2>
         </header>
         <!-- Massage Us form -->
-        <form action=""></form>
+        <div style="display: flex; gap: 20px">
+          <form id="form" name="contact-us" class="form-style">
+            <div>
+              <label>nama</label>
+              <input class="input-text" name="nama" type="text" />
+            </div>
+            <div>
+              <label>tanggal-lahir</label>
+              <input class="input-text" name="tanggal-lahir" type="date" />
+            </div>
+            <div>
+              <label>jenis kelamin</label>
+              <input
+                class="input-radio"
+                name="jenis-kelamin"
+                type="radio"
+                value="laki-laki"
+              />laki-laki
+              <input
+                class="input-radio"
+                name="jenis-kelamin"
+                type="radio"
+                value="perempuan"
+              />perempuan
+            </div>
+            <div>
+              <label>pesan</label>
+              <textarea name="pesan" id=""></textarea>
+            </div>
+            <div>
+              <button>submit</button>
+            </div>
+          </form>
+          <div id="hasil"></div>
+        </div>
       </section>
     </main>
     <hr />
@@ -147,5 +298,7 @@
     <footer>
       <span> Made By Dafi@2025</span>
     </footer>
+    <!-- js external -->
+    <script src="js/script.js"></script>
   </body>
 </html>
